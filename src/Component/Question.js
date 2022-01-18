@@ -1,6 +1,9 @@
-import React from 'react';
+import React , {useContext} from 'react';
+import {BackStateContext} from './Context/StateManagement';
 
 export default function Question() {
+
+    const {} = useContext(BackStateContext);
     return (
         <div className="flex flex-col items-center justify-center h-screen">
             <h1 className="text-6xl font-bold text-gray-800">

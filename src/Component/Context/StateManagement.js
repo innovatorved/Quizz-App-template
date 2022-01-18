@@ -1,10 +1,24 @@
-import React , {createContext , useState} from 'react';
+import React , {createContext , useState , useEffect} from 'react';
 
 
 
 const BackStateContext = createContext();
 
 const BackStateProvider = (props) => {
+
+  const [count , setCount] = useState(0);
+  useEffect(() => {
+      const interval = setInterval(() => {
+          if(count > 0){
+              setCount(count - 1);
+          }else{
+              clearInterval(interval);
+          }
+      },1000);
+      console.log(count);
+      return () => clearInterval(interval);
+  },[count]);
+
     const [place, setplace] = useState("home");
 
     const questions = [
@@ -60,7 +74,7 @@ const BackStateProvider = (props) => {
       ]
 
     return (
-        <BackStateContext.Provider value={{place , setplace , questions , Scores}}>
+        <BackStateContext.Provider value={{place , setplace , questions , Scores , count , setCount}}>
             {props.children}
         </BackStateContext.Provider>
     )

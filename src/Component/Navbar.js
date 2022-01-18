@@ -3,7 +3,7 @@ import {BackStateContext} from './Context/StateManagement';
 
 const Navbar =()=> {
     
-    const {place , setplace} = useContext(BackStateContext);
+    const {place , setplace , count} = useContext(BackStateContext);
 
     return (
         <nav className='fixed top-0 right-0 left-0 z-10 flex justify-between bg-[#218380] text-white p-4 font-serif'>
@@ -18,7 +18,7 @@ const Navbar =()=> {
             </ul >
         <ul className='flex space-x-4'>
             <li>Time : </li>
-            <li className='inline-block w-12'></li>
+            <li className='inline-block w-12'>{count}</li>
         </ul>
         </nav>
     )

@@ -2,10 +2,11 @@ import React , {useContext} from 'react';
 import {BackStateContext} from './Context/StateManagement';
 
 export default function Start() {
-    const {setplace} = useContext(BackStateContext);
+    const {setplace , setCount} = useContext(BackStateContext);
 
     const ChangePlace = () => {
         setplace("question");
+        setCount(50);
     };
 
     return (
