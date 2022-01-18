@@ -15,9 +15,17 @@ const BackStateProvider = (props) => {
               clearInterval(interval);
           }
       },1000);
-      console.log(count);
       return () => clearInterval(interval);
   },[count]);
+  
+  const falseAnswer = () => {
+      if (count > 10) {
+          setCount(count - 10);
+      }
+      else{
+          setCount(0);
+      }
+  }
 
     const [place, setplace] = useState("home");
 
@@ -62,19 +70,20 @@ const BackStateProvider = (props) => {
         },
       ];
 
-      const Scores = [
-        {
-          "name" : "Ved",
-          "score" : 120
-        },
-        {
-          "name" : "Dev",
-          "score" : 220
-        }
-      ]
+      const [allscore , setAllscore] = useState([]);
+
+      const addScore=(newscore)=>{
+        setAllscore([...allscore , newscore]);
+      }
+
+      const clearAllscore=()=>{
+        setAllscore([]);
+      }
+
+      const [score, setscore] = useState(0);
 
     return (
-        <BackStateContext.Provider value={{place , setplace , questions , Scores , count , setCount}}>
+        <BackStateContext.Provider value={{place , setplace , questions , count , setCount , score, setscore , allscore , addScore , falseAnswer , clearAllscore}}>
             {props.children}
         </BackStateContext.Provider>
     )
