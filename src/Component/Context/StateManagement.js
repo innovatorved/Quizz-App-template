@@ -7,6 +7,8 @@ const BackStateContext = createContext();
 const BackStateProvider = (props) => {
   const forWrongAnswer = 5; // -5points for every wrong anwer
   const forTrueAnswer = 10; // +10points for correct answer
+  const totalTime = 50; // Total time quiz to be run
+  const cutTime = 10; // cut time if user select incorrect answer
 
   const questions = [
     {
@@ -62,8 +64,8 @@ const BackStateProvider = (props) => {
   },[count]);
   
   const falseAnswer = () => {
-      if (count > 10) {
-          setCount(count - 10);
+      if (count > cutTime) {
+          setCount(count - cutTime);
       }
       else{
           setCount(0);
@@ -85,7 +87,7 @@ const BackStateProvider = (props) => {
       const [score, setscore] = useState(0);
 
     return (
-        <BackStateContext.Provider value={{forWrongAnswer , forTrueAnswer, place , setplace , questions , count , setCount , score, setscore , allscore , addScore , falseAnswer , clearAllscore}}>
+        <BackStateContext.Provider value={{forWrongAnswer , forTrueAnswer, totalTime, place , setplace , questions , count , setCount , score, setscore , allscore , addScore , falseAnswer , clearAllscore}}>
             {props.children}
         </BackStateContext.Provider>
     )

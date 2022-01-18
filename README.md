@@ -6,6 +6,14 @@
 
 template want to only set the questions and points for every correct answer and wrong anwser 
 
+# set these variables in 'src/Component/Context/StateManagement.js'
+
+```js
+  const forWrongAnswer = 5; // -5points for every wrong anwer
+  const forTrueAnswer = 10; // +10points for correct answer
+  const totalTime = 50; // Total time quiz to be run
+  const cutTime = 10; // cut time if user select incorrect answer
+```
 
 ## Images
 
