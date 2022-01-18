@@ -6,7 +6,8 @@
 
 template want to only set the questions and points for every correct answer and wrong anwser 
 
-# set these variables in 'src/Component/Context/StateManagement.js'
+# set these variables in 
+#### path 'src/Component/Context/StateManagement.js'
 
 ```js
   const forWrongAnswer = 5; // -5points for every wrong anwer
