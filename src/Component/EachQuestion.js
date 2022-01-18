@@ -3,7 +3,7 @@ import { BackStateContext } from './Context/StateManagement';
 
 
 export default function EachQuestion() {
-    const { questions, falseAnswer  , setCount , score, setscore} = useContext(BackStateContext);
+    const { questions, falseAnswer  , setCount , score, setscore , forWrongAnswer , forTrueAnswer} = useContext(BackStateContext);
     const [qusNo, setqusNo] = useState(0);
     const [show, setshow] = useState(false);
     const [answer, setAnswer] = useState(null);
@@ -17,21 +17,21 @@ export default function EachQuestion() {
         if (userAnswer !== questions[qusNo].answer) {
             falseAnswer();
             setAnswer(false);
-            setscore(score-5);
+            setscore(score-forWrongAnswer);
         } else {
             setAnswer(true);
-            setscore(score+10);
+            setscore(score+forTrueAnswer);
         }
 
         setTimeout(() => {
-            if (qusNo === 4){
+            if (qusNo === questions.length-1){
                 setshow(false);
                 setAnswer(null);
                 setdisable(false);
                 setqusNo(0);
                 setCount(0);
             }
-            else if (qusNo < 5) {
+            else if (qusNo < questions.length) {
                 setdisable(false);
                 setqusNo(qusNo + 1);
                 setshow(false);
